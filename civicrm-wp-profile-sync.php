@@ -70,10 +70,6 @@ class CiviCRM_WP_Profile_Sync {
 		// sync a WP user when a CiviCRM contact is updated
 		$this->_add_hooks_civi();
 
-        //TODO this bit is not a good practice and need to be changed.
-        // update display name
-        // wp_update_user( array( 'ID' => $user_id, 'display_name' => ( $objectRef->first_name . " " . $objectRef->last_name ) ) );
-
 		// are we allowing bulk operations?
 		if ( CIVICRM_WP_PROFILE_SYNC_BULK ) {
 
@@ -565,6 +561,10 @@ class CiviCRM_WP_Profile_Sync {
 
 		// update last name
 		update_user_meta( $user_id, 'last_name', $objectRef->last_name );
+
+        //TODO this bit is not a good practice and need to be changed.
+        // update display name
+        // wp_update_user( array( 'ID' => $user_id, 'display_name' => ( $objectRef->first_name . " " . $objectRef->last_name ) ) );
 
 		// compatibility with BP XProfile WordPress User Sync plugin
 		if ( defined( 'BP_XPROFILE_WP_USER_SYNC_VERSION' ) ) {
